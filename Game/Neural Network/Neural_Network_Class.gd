@@ -4,41 +4,47 @@ extends RefCounted
 var hidden_nodes:= 0
 var inputs := 0
 var outputs := 0
-var biases = []
-var weights = []
 
+var layers = []
+
+class neuralNode:
+	var bias : float
+	var value : float
+
+var weights = []
+#weights - weights[layer][sending][recieveing]
+
+var network : Array[Array]= [[]]
+# network - network[layer][node]
 
 func _init(input : int, output : int, hidden : int):
+	layers.resize(3)
 	hidden_nodes = hidden
+	layers[1] = hidden
 	inputs = input
+	layers[0] = input
 	outputs = output
+	layers[2] = output
 	
-	# Initialize Biases
-	biases.resize(3)
+	# initialize Network
+	network.resize(3)
 	for i in range(3):
-		biases[i] = []
+		network[i] = [] as Array[neuralNode]
 		var current_layer
-		if i == 0:
-			current_layer = inputs
-		elif i == 1:
-			current_layer = hidden_nodes
-		else:
-			current_layer = outputs
-		biases[i].resize(current_layer)
+		current_layer = layers[i]
+		network[i].resize(current_layer)
 		for j in range(current_layer):
-			biases[i][j] = 0.0
+			network[i][j] = neuralNode.new()
+			network[i][j].bias = 0.1
+			network[i][j].value = 0.0
 	
-	# Initilize weights
+	# initilize weights
 	weights.resize(2)
 	for i in range(2):
 		var prev_layer
 		var next_layer
-		if i == 0:
-			prev_layer = inputs
-			next_layer = hidden_nodes
-		elif i == 1:
-			prev_layer = hidden_nodes
-			next_layer = outputs
+		prev_layer = layers[i]
+		next_layer = layers[i+1]
 		weights[i] = []
 		weights[i].resize(prev_layer)
 		for j in range(prev_layer):
@@ -47,4 +53,20 @@ func _init(input : int, output : int, hidden : int):
 			for n in range(next_layer):
 				weights[i][j][n] = randf()
 
+func compute(input_values : Array[float]) -> Array[float]:
+	
+	for i in range(inputs):
+		network[0][i].value = input_values[i]
+	
+	for n in range(2):
+		for i in range(layers[n+1]):
+			var sum = network[n+1][i].bias
+			for j in range(layers[n]):
+				sum += network[n][j].value * weights[n][j][i]
+			network[n+1][i].value = tanh(sum)
+	
+	var output_values = []
+	for i in range(outputs):
+		output_values.append(network[2][i].value)
+	return network[2]
  
