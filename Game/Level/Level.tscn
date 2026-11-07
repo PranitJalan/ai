@@ -6,6 +6,14 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qr5sa"]
 distance = 65.0
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_afmmk"]
+normal = Vector2(0.999898, 0.014284257)
+distance = -331.98856
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yv1b8"]
+normal = Vector2(-1, 0)
+distance = -242.0
+
 [node name="Node2D" type="Node2D" unique_id=291141560]
 
 [node name="Area2D" type="StaticBody2D" parent="." unique_id=484039998]
@@ -13,10 +21,16 @@ distance = 65.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1684511999]
 shape = SubResource("WorldBoundaryShape2D_qr5sa")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1409396093]
+shape = SubResource("WorldBoundaryShape2D_afmmk")
+
 [node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=263883569]
-position = Vector2(-0.49987793, 0)
+position = Vector2(1, 2)
 scale = Vector2(37.054688, 1)
 texture = ExtResource("1_q5rww")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D" unique_id=1015266972]
+shape = SubResource("WorldBoundaryShape2D_yv1b8")
 
 [node name="Playr" parent="." unique_id=278357517 instance=ExtResource("2_1kyln")]
 position = Vector2(-44, -202)

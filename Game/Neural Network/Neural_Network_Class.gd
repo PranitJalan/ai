@@ -5,6 +5,10 @@ var hidden_nodes:= 0
 var inputs := 0
 var outputs := 0
 
+var mutation_chance = 0.1
+var mutation_strength = 0.3
+
+
 var layers = []
 
 class neuralNode:
@@ -68,5 +72,32 @@ func compute(input_values : Array[float]) -> Array[float]:
 	var output_values = []
 	for i in range(outputs):
 		output_values.append(network[2][i].value)
-	return network[2]
+	return output_values
  
+func mutate():
+	for i in range(2):
+		for j in range(layers[i]):
+			for n in range(layers[i+1]):
+				if randf() < mutation_chance:
+					weights[i][j][n] += randf_range(-mutation_strength, mutation_strength)
+	
+	for i in range(3):
+		for j in range(layers[i]):
+			if randf() < mutation_chance:
+				network[i][j].bias += randf_range(-mutation_strength, mutation_strength)
+
+func copy() -> neuralBrain:
+	var new_brain = neuralBrain.new(inputs, outputs, hidden_nodes)
+	
+	for i in range(2):
+		for j in range(layers[i]):
+			for n in range(layers[i+1]):
+				new_brain.weights[i][j][n] = weights[i][j][n]
+	
+	for i in range(3):
+		for j in range(layers[i]):
+			new_brain.network[i][j].bias = network[i][j].bias
+			new_brain.network[i][j].value = network[i][j].value
+	
+	
+	return new_brain
