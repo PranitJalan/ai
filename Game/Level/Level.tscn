@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://crpqdtblifrls"]
 
-[ext_resource type="Texture2D" uid="uid://dqfbl2w3qjiry" path="res://icon.svg" id="1_q5rww"]
 [ext_resource type="PackedScene" uid="uid://btwn5321i122u" path="res://Game/Player/Player.tscn" id="2_1kyln"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qr5sa"]
-distance = 65.0
+[ext_resource type="Script" uid="uid://cncb0hh55kfqq" path="res://Game/Level/block.gd" id="2_q5rww"]
+[ext_resource type="PackedScene" uid="uid://c3xypq4jxippw" path="res://Game/Level/Level_segment.tscn" id="3_1kyln"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_afmmk"]
-normal = Vector2(0.999898, 0.014284257)
-distance = -331.98856
+normal = Vector2(0.9999946, 0.003300312)
+distance = -314.00488
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qr5sa"]
+distance = -1.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yv1b8"]
 normal = Vector2(-1, 0)
@@ -16,21 +17,26 @@ distance = -242.0
 
 [node name="Node2D" type="Node2D" unique_id=291141560]
 
-[node name="Area2D" type="StaticBody2D" parent="." unique_id=484039998]
+[node name="Playr" parent="." unique_id=278357517 instance=ExtResource("2_1kyln")]
+position = Vector2(605, 84)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1684511999]
-shape = SubResource("WorldBoundaryShape2D_qr5sa")
+[node name="Area2D2" type="StaticBody2D" parent="." unique_id=314994065]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1409396093]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2" unique_id=1409396093]
+position = Vector2(314, 375)
 shape = SubResource("WorldBoundaryShape2D_afmmk")
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=263883569]
-position = Vector2(1, 2)
-scale = Vector2(37.054688, 1)
-texture = ExtResource("1_q5rww")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1684511999]
+position = Vector2(576, 649)
+shape = SubResource("WorldBoundaryShape2D_qr5sa")
+debug_color = Color(1, 1, 1, 0.41960785)
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D" unique_id=1015266972]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D2" unique_id=1015266972]
+position = Vector2(909, 352)
 shape = SubResource("WorldBoundaryShape2D_yv1b8")
 
-[node name="Playr" parent="." unique_id=278357517 instance=ExtResource("2_1kyln")]
-position = Vector2(-44, -202)
+[node name="Node2D" type="Node2D" parent="." unique_id=867314739]
+script = ExtResource("2_q5rww")
+block_size = Vector2(64, 128)
+scroll_speed = 64
+block = ExtResource("3_1kyln")

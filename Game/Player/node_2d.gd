@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var gravity := 400
+@export var gravity := 900
 @export var friction := 300
 @export var acceleration := 300
 @export var max_speed := 1000
@@ -10,7 +10,7 @@ extends CharacterBody2D
 var direction := 0
 var jump := false
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	get_input()
 	do_movement(delta)
 	move_and_slide()
@@ -30,5 +30,5 @@ func do_movement(delta):
 		if jump:
 			velocity.y -= jump_strength
 	else:
-		velocity.y += gravity
+		velocity.y += gravity*delta
 	jump = false
