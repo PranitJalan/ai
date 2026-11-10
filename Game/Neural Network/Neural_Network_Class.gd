@@ -1,5 +1,5 @@
 class_name neuralBrain
-extends RefCounted
+extends Resource
 
 var hidden_nodes:= 0
 var inputs := 0
@@ -55,7 +55,7 @@ func _init(input : int, output : int, hidden : int):
 			weights[i][j] = []
 			weights[i][j].resize(next_layer)
 			for n in range(next_layer):
-				weights[i][j][n] = randf()
+				weights[i][j][n] = randf_range(-1.0, 1.0)
 
 func compute(input_values : Array[float]) -> Array[float]:
 	
@@ -69,7 +69,7 @@ func compute(input_values : Array[float]) -> Array[float]:
 				sum += network[n][j].value * weights[n][j][i]
 			network[n+1][i].value = tanh(sum)
 	
-	var output_values = []
+	var output_values : Array[float]= []
 	for i in range(outputs):
 		output_values.append(network[2][i].value)
 	return output_values

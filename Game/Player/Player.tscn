@@ -8,10 +8,12 @@ size = Vector2(126, 124)
 
 [node name="Node2D" type="CharacterBody2D" unique_id=278357517]
 scale = Vector2(0.5, 0.5)
+collision_layer = 2
 script = ExtResource("1_4672b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=942213613]
 shape = SubResource("RectangleShape2D_qr5sa")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=314084500]
+visible = false
 texture = ExtResource("2_fd82q")
