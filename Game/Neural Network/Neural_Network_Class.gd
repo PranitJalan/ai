@@ -1,27 +1,23 @@
 class_name neuralBrain
 extends Resource
 
-var hidden_nodes:= 0
-var inputs := 0
-var outputs := 0
+@export var hidden_nodes:= 0
+@export var inputs := 0
+@export var outputs := 0
 
-var mutation_chance = 0.1
-var mutation_strength = 0.3
+@export var mutation_chance := 0.1
+@export var mutation_strength := 0.3
 
 
-var layers = []
+@export var layers : Array[int] = []
 
-class neuralNode:
-	var bias : float
-	var value : float
-
-var weights = []
+@export var weights = []
 #weights - weights[layer][sending][recieveing]
 
-var network : Array[Array]= [[]]
+@export var network : Array[Array]= [[]]
 # network - network[layer][node]
 
-func _init(input : int, output : int, hidden : int):
+func _init(input : int = 2, output : int = 8, hidden : int = 9):
 	layers.resize(3)
 	hidden_nodes = hidden
 	layers[1] = hidden
@@ -80,11 +76,13 @@ func mutate():
 			for n in range(layers[i+1]):
 				if randf() < mutation_chance:
 					weights[i][j][n] += randf_range(-mutation_strength, mutation_strength)
+					weights[i][j][n] = clampf(weights[i][j][n], -2.0, 2.0)
 	
 	for i in range(3):
 		for j in range(layers[i]):
 			if randf() < mutation_chance:
 				network[i][j].bias += randf_range(-mutation_strength, mutation_strength)
+				network[i][j].bias = clampf(network[i][j].bias, -2.0, 2.0)
 
 func copy() -> neuralBrain:
 	var new_brain = neuralBrain.new(inputs, outputs, hidden_nodes)

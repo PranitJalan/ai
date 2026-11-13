@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bgduhco7bnka3"]
+
+[ext_resource type="Script" uid="uid://cncb0hh55kfqq" path="res://Game/Level/block.gd" id="1_sjwn0"]
+[ext_resource type="PackedScene" uid="uid://c3xypq4jxippw" path="res://Game/Level/Level_segment.tscn" id="2_tfm8k"]
+
+[node name="Blocks" type="Node2D" unique_id=105566002 groups=["level"]]
+script = ExtResource("1_sjwn0")
+block_size = Vector2(64, 128)
+scroll_speed = 256
+block = ExtResource("2_tfm8k")

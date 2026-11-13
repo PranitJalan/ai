@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="AI"
-run/main_scene="uid://crpqdtblifrls"
+run/main_scene="uid://bfo44yjqgll1u"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

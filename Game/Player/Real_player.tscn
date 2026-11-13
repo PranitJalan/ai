@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://ysg3ndpr2vh3"]
+
+[ext_resource type="Texture2D" uid="uid://dqfbl2w3qjiry" path="res://icon.svg" id="2_4nqwm"]
+
+[sub_resource type="GDScript" id="GDScript_1kyln"]
+script/source = "extends CharacterBody2D
+
+
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
+@export var gravity := 900
+@export var friction := 200
+@export var acceleration := 300
+@export var max_speed := 600
+@export var jump_strength := 400
+
+var direction := 0
+var jump := false
+var fitness = 0.0
+var manager
+
+
+func go() -> void:
+	manager.current_generation.erase(self)
+	manager.who = \"player\"
+	queue_free()
+
+func _physics_process(delta: float) -> void:
+	get_input()
+	do_movement(delta)
+	move_and_slide()
+	fitness += delta
+
+func get_input():
+	direction = Input.get_axis(\"left\", \"right\")
+	if Input.is_action_just_pressed(\"jump\"):
+		jump = true
+
+func do_movement(delta):
+	if direction:
+		velocity.x = move_toward(velocity.x, max_speed*direction, acceleration*delta)
+	else:
+		velocity.x = move_toward(velocity.x, 0, friction*delta)
+	if is_on_floor():
+		if jump:
+			velocity.y -= jump_strength
+	else:
+		velocity.y += gravity*delta
+	jump = false
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qr5sa"]
+size = Vector2(102.50003, 102.50002)
+
+[node name="Node2D" type="CharacterBody2D" unique_id=278357517]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.4, 0.4)
+collision_layer = 2
+script = SubResource("GDScript_1kyln")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=314084500]
+position = Vector2(2.3841858e-07, 0)
+texture = ExtResource("2_4nqwm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=942213613]
+position = Vector2(4.5776367e-05, -9.536743e-07)
+scale = Vector2(0.9999995, 0.9999995)
+shape = SubResource("RectangleShape2D_qr5sa")

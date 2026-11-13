@@ -3,9 +3,9 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 @export var gravity := 900
-@export var friction := 300
+@export var friction := 200
 @export var acceleration := 300
-@export var max_speed := 1000
+@export var max_speed := 600
 @export var jump_strength := 400
 
 var direction := 0
@@ -21,6 +21,7 @@ func _ready() -> void:
 func go() -> void:
 	manager.current_generation.erase(self)
 	manager.current_winner = brain.copy()
+	manager.who = "ai"
 	queue_free()
 
 func _physics_process(delta: float) -> void:
@@ -37,7 +38,7 @@ func get_input():
 	input.append(velocity.y/width.y)
 	var level = get_tree().get_first_node_in_group("level")
 	var gap = level.get_next_gap(position.x)
-	input.append(gap.x/width.x)
+	input.append(gap.x - position.x/width.x)
 	input.append(gap.y/width.x)
 	var outputs = brain.compute(input)
 	if outputs[0] < -0.25:

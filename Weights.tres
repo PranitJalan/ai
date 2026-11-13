@@ -1,0 +1,108 @@
+[gd_resource type="Resource" script_class="neuralBrain" format=3]
+
+[ext_resource type="Script" path="res://Game/Neural Network/Neuralnode.gd" id="1_i2h4y"]
+[ext_resource type="Script" path="res://Game/Neural Network/Neural_Network_Class.gd" id="2_k0uha"]
+
+[sub_resource type="Resource" id="Resource_i2h4y"]
+script = ExtResource("1_i2h4y")
+bias = -1.0456989323155705
+value = 0.41118942366706
+
+[sub_resource type="Resource" id="Resource_k0uha"]
+script = ExtResource("1_i2h4y")
+bias = 0.9681744879071885
+value = 0.9245548954716435
+
+[sub_resource type="Resource" id="Resource_77i6a"]
+script = ExtResource("1_i2h4y")
+bias = -1.9621749583952752
+value = -0.9876227823043005
+
+[sub_resource type="Resource" id="Resource_popj7"]
+script = ExtResource("1_i2h4y")
+bias = -0.37213464376336236
+value = -0.2161457052494774
+
+[sub_resource type="Resource" id="Resource_xa3qp"]
+script = ExtResource("1_i2h4y")
+bias = -0.07078500960553644
+value = 0.6965145974657159
+
+[sub_resource type="Resource" id="Resource_cge45"]
+script = ExtResource("1_i2h4y")
+bias = -0.6117865329157937
+value = -0.9368122456255651
+
+[sub_resource type="Resource" id="Resource_dfxmm"]
+script = ExtResource("1_i2h4y")
+bias = -0.837718004561397
+value = 0.23014683907921307
+
+[sub_resource type="Resource" id="Resource_qecwl"]
+script = ExtResource("1_i2h4y")
+bias = 0.01259858913600187
+value = -0.8746630304978735
+
+[sub_resource type="Resource" id="Resource_8nt4w"]
+script = ExtResource("1_i2h4y")
+bias = -1.1100095375746184
+value = -0.9320465375204465
+
+[sub_resource type="Resource" id="Resource_ceebu"]
+script = ExtResource("1_i2h4y")
+bias = -0.02586945536833362
+value = 0.7767366762317376
+
+[sub_resource type="Resource" id="Resource_av28d"]
+script = ExtResource("1_i2h4y")
+bias = 1.530724316369262
+value = 0.9062847271322996
+
+[sub_resource type="Resource" id="Resource_732ac"]
+script = ExtResource("1_i2h4y")
+bias = 0.005418750182493673
+value = -0.1990104186330286
+
+[sub_resource type="Resource" id="Resource_2n7bg"]
+script = ExtResource("1_i2h4y")
+bias = 0.3432979838845667
+value = 0.8995836786461575
+
+[sub_resource type="Resource" id="Resource_j6wht"]
+script = ExtResource("1_i2h4y")
+bias = -0.7100432610158345
+value = -0.9428118404586557
+
+[sub_resource type="Resource" id="Resource_g53pi"]
+script = ExtResource("1_i2h4y")
+bias = 0.5934755413554547
+value = -0.5645518292822181
+
+[sub_resource type="Resource" id="Resource_ktaq4"]
+script = ExtResource("1_i2h4y")
+bias = -0.3101491636785279
+value = -0.9931427001715512
+
+[sub_resource type="Resource" id="Resource_li3do"]
+script = ExtResource("1_i2h4y")
+bias = 0.4935227590940124
+value = 0.9869940879095993
+
+[sub_resource type="Resource" id="Resource_0otc7"]
+script = ExtResource("1_i2h4y")
+bias = -0.08138855367006262
+value = 0.9989756449923444
+
+[sub_resource type="Resource" id="Resource_1mgeu"]
+script = ExtResource("1_i2h4y")
+bias = 0.16535274261572425
+value = 0.9421317441756172
+
+[resource]
+script = ExtResource("2_k0uha")
+hidden_nodes = 9
+inputs = 2
+outputs = 8
+layers = Array[int]([2, 9, 8])
+weights = [[[-0.11119635710344133, -0.40034938631202405, 0.2729665005857129, 0.3662164901756559, 1.495691840770616, -0.7659738766903066, -0.3056719723023534, -0.4237483317669634, -1.7863760761149432], [-0.5748937560017964, 0.34302421266801975, 0.8858780736071521, -1.35215542484831, 0.4943458239564601, -1.1359275764255956, -0.4738035413254663, 1.3381586757636164, 0.7680882751352884]], [[-1.0373526237991655, -1.515471629448046, 0.44662491084258915, 1.0300688003883522, 1.6873832676809384, -0.1864519121528071, -1.183433540310164, 0.2478374592909511], [-1.183542992863542, -1.833349263257754, 1.1304628472541953, 0.07024878851065589, -0.06269462873502041, -0.2341278833033642, -1.4372068594804013, 0.47433870556727536], [-2.0, 0.5629501305216091, -0.32031261117833637, 0.13218342214597067, 0.659132001787526, -0.09263378355708982, 0.3309336817287233, -0.8342190069466893], [0.14255324873596326, -0.6583237080956545, 0.5992875277529086, 0.7763048033797728, -0.22610209382874172, -1.2726382113358174, -0.3530018482738222, -1.8631199183960283], [-0.8331993486252581, -0.2838465924437377, -1.0046181021426466, -0.21040286000850333, -0.07518014957403729, -2.0, -0.4475387863907688, -0.45105365984230755], [-0.5495759248206684, 0.4893250053434499, -0.3125076418146177, 0.20287615739872789, 0.768292246996757, -0.5634736203328092, 0.2939796240302559, -0.2702420271997676], [-0.46756873815494443, 0.43895531594833986, -0.5716800683208154, 0.5647474769726796, 0.3840419701628258, -0.5854805920599832, -0.621867468429331, -1.1214808815520707], [-1.5118151158191897, 0.3205892853536889, -0.6375856241249253, 0.25713109442648063, 0.5856231714560712, 0.4692553957778227, 0.003291261320825939, 0.2342213722159353], [0.5392060185102037, -1.2376294928790181, 0.37240982534294376, 1.0893289173112621, -1.0499149847336646, -0.31361745844960986, 1.7730524145693423, -0.6460232117538014]]]
+network = Array[Array]([Array[ExtResource("1_i2h4y")]([SubResource("Resource_i2h4y"), SubResource("Resource_k0uha")]), Array[ExtResource("1_i2h4y")]([SubResource("Resource_77i6a"), SubResource("Resource_popj7"), SubResource("Resource_xa3qp"), SubResource("Resource_cge45"), SubResource("Resource_dfxmm"), SubResource("Resource_qecwl"), SubResource("Resource_8nt4w"), SubResource("Resource_ceebu"), SubResource("Resource_av28d")]), Array[ExtResource("1_i2h4y")]([SubResource("Resource_732ac"), SubResource("Resource_2n7bg"), SubResource("Resource_j6wht"), SubResource("Resource_g53pi"), SubResource("Resource_ktaq4"), SubResource("Resource_li3do"), SubResource("Resource_0otc7"), SubResource("Resource_1mgeu")])])

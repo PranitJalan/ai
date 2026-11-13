@@ -13,5 +13,4 @@ sync_to_physics = false
 texture = ExtResource("1_vhlla")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1502050392]
-visible = false
 shape = SubResource("RectangleShape2D_7nvyl")

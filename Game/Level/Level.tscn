@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bbrwj3bo8getp" path="res://Game/Level/level.gd" id="1_2pf45"]
 [ext_resource type="PackedScene" uid="uid://btwn5321i122u" path="res://Game/Player/Player.tscn" id="2_1kyln"]
-[ext_resource type="Script" uid="uid://cncb0hh55kfqq" path="res://Game/Level/block.gd" id="2_q5rww"]
-[ext_resource type="PackedScene" uid="uid://c3xypq4jxippw" path="res://Game/Level/Level_segment.tscn" id="3_1kyln"]
+[ext_resource type="PackedScene" uid="uid://bgduhco7bnka3" path="res://Game/Level/World.tscn" id="3_1kyln"]
+[ext_resource type="PackedScene" uid="uid://ysg3ndpr2vh3" path="res://Game/Player/Real_player.tscn" id="3_2pf45"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_afmmk"]
 normal = Vector2(0.9999946, 0.003300312)
@@ -29,6 +29,8 @@ distance = 32.0
 [node name="Node2D" type="Node2D" unique_id=291141560]
 script = ExtResource("1_2pf45")
 player = ExtResource("2_1kyln")
+real_player = ExtResource("3_2pf45")
+world = ExtResource("3_1kyln")
 
 [node name="World" type="Node2D" parent="." unique_id=826094045]
 
@@ -51,10 +53,8 @@ position = Vector2(576, 649)
 shape = SubResource("WorldBoundaryShape2D_qr5sa")
 debug_color = Color(1, 1, 1, 0.41960785)
 
-[node name="Blocks" type="Node2D" parent="World" unique_id=867314739 groups=["level"]]
-script = ExtResource("2_q5rww")
-block_size = Vector2(64, 128)
-scroll_speed = 256
-block = ExtResource("3_1kyln")
+[node name="Label" type="Label" parent="World" unique_id=1174190347]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [connection signal="body_entered" from="World/Void" to="World/Void" method="_on_body_entered"]

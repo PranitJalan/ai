@@ -10,11 +10,13 @@ var global_spawn := 0.0
 var gaps : Array[Vector2]
 
 func _ready() -> void:
+	for i in range(10):
+		global_spawn += block_size.x
+		spawn_block()
 	spawn_level()
 
 
-
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	position.x -= scroll_speed*delta
 	spawn_level()
 	remove_offscreen()
@@ -51,6 +53,6 @@ func spawn_block():
 
 func get_next_gap(player_x: float) -> Vector2:
 	for i in gaps:
-		if player_x < to_global(Vector2(i.x, 0)).x:
+		if player_x < to_global(Vector2(i.x, 0)).x  + i.y:
 			return Vector2(to_global(Vector2(i.x, 0)).x, i.y)
 	return Vector2(0, 0)
